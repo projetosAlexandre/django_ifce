@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
+
 
 import os
 import sys
+
+
+
+from django.contrib.messages import constants as messages
+
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,18 +43,29 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'aluno.apps.AlunoConfig',
-    'core.apps.CoreConfig',
-    'turma.apps.TurmaConfig',
-    'professor.apps.ProfessorConfig',
+    'django.contrib.sites'
+   
+    
 ]
+SITE_ID = 1
+
+THIRD_APPS = []
+
+PROJECT_APPS = [
+'core.apps.CoreConfig',
+'turma.apps.TurmaConfig',
+'professor.apps.ProfessorConfig',
+'aluno.apps.AlunoConfig',
+]
+INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + PROJECT_APPS
 
 
 
@@ -147,3 +164,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from django.contrib.messages import constants as messages
+# PERSONALIZANDO MENSAGENS DO SISTEMA
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
