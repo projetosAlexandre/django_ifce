@@ -1,53 +1,139 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Django IFCE</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>
+    {% block title %} DJANGO IFCE
+     {% endblock title%}
 
-     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </title>
+
+  
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
+  <!-- CSS  -->
+  
+ 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  
+  <link href="{% static 'css/materialize.css' %} " type="text/css" rel="stylesheet" media="screen,projection" />
+ 
+  
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="">Aluno</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+  
+    
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Django IFCE</a>
+      <ul class="right hide-on-med-and-down">
+        {% comment %} {% if user.is_authenticated%} {% endcomment %}
+          <li><a href="">Dashboard</a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown">Aluno<i class="material-icons right">arrow_drop_down</i></a></li>
+       
+          <li><a href="">Sair</a></li>
       </ul>
+
+         
+      <ul id="dropdown" class="dropdown-content">
+        <li><a href="{% url 'aluno:add_aluno'  %}">Adicionar</a></li>
+        <li><a href="">Listar</a></li>
+        <li><a href="">Monitor</a></li>
+      </ul>
+         
+
+
+
+  
+        
+       
+       
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+      {% comment %} {% if user.is_authenticated%} {% endcomment %}
+      <li><a href="">Dashboard</a></li>
+      <li><a href="">Perfil</a></li>
+      <li><a href="">Sair</a></li>
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Dropdown<i
+            class="material-icons right">arrow_drop_down</i></a></li>
+      
+      
+      
+      {% comment %} {% else%} {% endcomment %}
+      
+      <li><a href="">Criar Conta</a></li>
+      <li><a href="">Login</a></li>
+      
+      {% comment %} {%endif%} {% endcomment %}
+        </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
+  </nav>
+
   </div>
-</nav>
 
-  {% block body %}
-
+  {% block body%}
+   
 
   {% endblock body %}
+  
 
- <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
- <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script> 
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+
+      let dateObj = new Date();
+      //DATEPICKER
+      $(document).ready(function () {
+        $('.datepicker').datepicker({
+          yearRange:[1930,dateObj.getFullYear()],
+          format: 'dd/mm/yyyy'
+        });
+      });
+        //NAVBAR DROPDOWN
+        
+
+      
+         $(".dropdown-trigger").dropdown({
+           inDuration: 300,
+           outDuration: 225,
+           constrain_width: false, // Does not change width of dropdown to that of the activator
+           hover: false, // Activate on hover
+           gutter: 0, // Spacing from edge
+           belowOrigin: false, // Displays dropdown below the button
+           alignment: 'left' // 
+           
+         });
+
+         /* MODAL*/
+         $(document).ready(function () {
+            $('.modal').modal();
+          });
+        
+
+
+
+  </script>
+
 </body>
+
 </html>

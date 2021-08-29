@@ -57,13 +57,14 @@ DJANGO_APPS = [
 ]
 SITE_ID = 1
 
-THIRD_APPS = []
+THIRD_APPS = ['widget_tweaks',]
 
 PROJECT_APPS = [
 'core.apps.CoreConfig',
 'turma.apps.TurmaConfig',
 'professor.apps.ProfessorConfig',
 'aluno.apps.AlunoConfig',
+
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + PROJECT_APPS
 

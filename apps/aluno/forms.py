@@ -1,6 +1,9 @@
 from django import forms
 from aluno.models import Aluno
+from bootstrap_datepicker_plus import DatePickerInput
 
-class EstudanteForm(forms.ModelForm):
-    model = Aluno
-    fields = ['nome','cpf','email','data_nasc']
+class AlunoForm(forms.ModelForm):
+    class Meta:
+        model = Aluno
+        fields = ['nome','cpf','email','data_nasc','user']
+        
