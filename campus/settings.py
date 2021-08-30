@@ -66,6 +66,7 @@ PROJECT_APPS = [
 'aluno.apps.AlunoConfig',
 
 ]
+
 INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + PROJECT_APPS
 
 

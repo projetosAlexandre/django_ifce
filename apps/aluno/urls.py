@@ -12,5 +12,6 @@ urlpatterns = [
     #adicionando a view do core
 
     path('',views.AddAluno,name='add_aluno'),
+    path('alunos/lista',views.lista_alunos,name='lista_alunos'),
 
 ]

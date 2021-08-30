@@ -5,8 +5,7 @@ from aluno.forms import AlunoForm
 
 
 # Create your views here.
-def newAluno(request):
-    return render(request,'aluno/add_aluno.html',{})
+
 
 
 def AddAluno(request):
@@ -15,9 +14,21 @@ def AddAluno(request):
     if request.method == 'POST':
         form = AlunoForm(request.POST)
         if form.is_valid():
-            f = form.save(commit=False)
+            # f = form.save(commit=False)
             form.save()
             messages.success(request, "Usuário salvo com sucesso!")
+        else:
+            messages.error(request, "Erro ao salvar dados!")
     form = AlunoForm()
     context['form'] = form
+    return render(request,template_name,context)
+
+
+
+def lista_alunos(request):
+    template_name = 'aluno/lista_alunos.html'
+    alunos = Aluno.objects.all().reverse()
+    context = {
+       'alunos':alunos 
+    }
     return render(request,template_name,context)
