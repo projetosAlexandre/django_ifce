@@ -1,10 +1,18 @@
 {% if messages %}
     {% for message in messages %}
         <div class="alert {{ message.tags }}" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
+            <span class="helper-text" data-error="wrong" data-success="right">
+               
+                    <h5 style="color: blue;">{{ message }}</h5> 
+            
+
+
+            </span>
+
         </div>
     {% endfor %}
 {% endif %}
